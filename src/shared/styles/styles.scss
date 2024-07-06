@@ -1,0 +1,14 @@
+@import './reset.scss';
+
+::-webkit-scrollbar {
+  width: 0.5rem;
+
+  @media (max-width: 48rem) {
+    width: 0.25rem;
+  }
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5.5rem;
+  background: rgb(105, 215, 245);
+}
