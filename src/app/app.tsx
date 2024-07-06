@@ -1,5 +1,10 @@
+import { TaskList } from 'features/task-list';
 import 'shared/styles/styles.scss';
 
 export const App = () => {
-  return <div>App</div>;
+  return (
+    <main>
+      <TaskList />
+    </main>
+  );
 };
