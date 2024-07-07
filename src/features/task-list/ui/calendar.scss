@@ -1,0 +1,171 @@
+.calendar {
+  width: 31.25rem;
+  border-radius: 0.3125rem;
+  text-transform: capitalize;
+  background-color: #f0f0f0;
+
+  &__header {
+    position: relative;
+    border-radius: 0.3125rem 0.3125rem 0 0;
+    background-color: #fefefe;
+    color: var(--color-text);
+    padding: 0.625rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0rem 0.125rem 0.625rem -0.0625rem rgba(0, 0, 0, 0.2);
+
+    &__arrow-left {
+      width: 0.9375rem;
+      height: 0.625rem;
+      cursor: pointer;
+      background-image: url('../assets/arrow-left.svg');
+      background-repeat: no-repeat;
+    }
+
+    &__arrow-right {
+      width: 0.9375rem;
+      height: 0.625rem;
+      cursor: pointer;
+      background-image: url('../assets/arrow-left.svg');
+      transform: rotate(-180deg);
+      background-repeat: no-repeat;
+    }
+  }
+
+  &__body {
+    border-radius: 0 0 0.3125rem 0.3125rem;
+    padding: 0.3125rem;
+
+    &__week-names {
+      height: 20px;
+      font-weight: 600;
+      font-size: 8px;
+      color: #62a4fa;
+      text-align: center;
+      align-items: center;
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 1px 1px;
+    }
+
+    &__days {
+      font-size: 0.625rem;
+      font-weight: 400;
+      color: #434334;
+      text-align: center;
+      display: grid;
+      text-align: center;
+      align-items: center;
+      grid-template-columns: repeat(7, 1fr);
+      grid-template-rows: 1fr;
+      gap: 0.0625rem 0.0625rem;
+
+      &__day {
+        border-radius: 0.3125rem;
+        padding: 0.3438rem 0rem;
+        cursor: pointer;
+
+        &_additional-day {
+          padding: 0.3438rem;
+          font-weight: 300;
+          cursor: pointer;
+          color: rgb(144, 144, 144);
+        }
+
+        &_selected {
+          color: #333;
+          background-color: #ffe684;
+          &:hover {
+            background-color: greenyellow;
+          }
+        }
+
+        &_today {
+          background-color: lightgreen;
+        }
+
+        &:hover {
+          background-color: rgb(255, 138, 138);
+        }
+      }
+    }
+
+    &__months {
+      font-weight: 400;
+      color: #111;
+      text-align: center;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+      gap: 0.0625rem 0.0625rem;
+      font-size: 0.75rem;
+
+      &__month {
+        padding: 0.5625rem 0rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        border-radius: 0.3125rem;
+
+        &_selected {
+          color: #333;
+          &:hover {
+            background-color: greenyellow;
+          }
+        }
+
+        &_current {
+          color: #333;
+          background-color: #ffe684;
+          &:hover {
+            background-color: greenyellow;
+          }
+        }
+      }
+    }
+
+    &__years {
+      font-weight: 400;
+      color: #111;
+      text-align: center;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+      gap: 0.0625rem 0.0625rem;
+      font-size: 0.75rem;
+
+      &__unchoosable-year {
+        font-weight: 300;
+        padding: 9px 16px;
+        color: #eee;
+
+        &__year {
+          padding: 0.5625rem 0rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          border-radius: 0.3125rem;
+
+          &_selected {
+            color: #333;
+            background-color: #ffe684;
+            &:hover {
+              background-color: greenyellow;
+            }
+          }
+
+          &_today {
+            background-color: lightgreen;
+          }
+
+          &:hover {
+            background-color: #ef3f3f;
+          }
+        }
+      }
+    }
+  }
+}

@@ -4,10 +4,10 @@ export const Task = (props: ITaskParams) => {
   const { task } = props;
 
   return (
-    <li>
+    <tr>
       {Object.values(task).map((field) => (
-        <p key={field}>{field}</p>
+        <td key={field}>{field}</td>
       ))}
-    </li>
+    </tr>
   );
 };
