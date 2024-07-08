@@ -8,14 +8,27 @@
     position: relative;
     border-radius: 0.3125rem 0.3125rem 0 0;
     background-color: #fefefe;
-    color: var(--color-text);
     padding: 0.625rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     box-shadow: 0rem 0.125rem 0.625rem -0.0625rem rgba(0, 0, 0, 0.2);
 
-    &__arrow-left {
+    & > tr {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
+      justify-items: center;
+    }
+
+    &__date {
+      cursor: pointer;
+    }
+
+    &__arrow-left,
+    &__arrow-right {
+      display: block;
       width: 0.9375rem;
       height: 0.625rem;
       cursor: pointer;
@@ -24,12 +37,13 @@
     }
 
     &__arrow-right {
-      width: 0.9375rem;
-      height: 0.625rem;
-      cursor: pointer;
-      background-image: url('../assets/arrow-left.svg');
       transform: rotate(-180deg);
-      background-repeat: no-repeat;
+    }
+
+    &__months,
+    &__years,
+    &__days {
+      display: none;
     }
   }
 
@@ -38,15 +52,15 @@
     padding: 0.3125rem;
 
     &__week-names {
-      height: 20px;
+      height: 1.25rem;
       font-weight: 600;
-      font-size: 8px;
+      font-size: 0.5rem;
       color: #62a4fa;
       text-align: center;
       align-items: center;
       display: grid;
       grid-template-columns: repeat(7, 1fr);
-      gap: 1px 1px;
+      gap: 0.0625rem 0.0625rem;
     }
 
     &__days {
@@ -138,7 +152,7 @@
 
       &__unchoosable-year {
         font-weight: 300;
-        padding: 9px 16px;
+        padding: 0.5625rem 1rem;
         color: #eee;
 
         &__year {

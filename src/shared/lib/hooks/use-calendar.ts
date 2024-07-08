@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { getMonthesNames, createMonth, getWeekDaysNames, getMonthNumberOfDays, createDate } from 'shared/helpers/date';
 
 interface IUseCalendarProps {
@@ -15,13 +15,13 @@ const getYearsInterval = (year: number) => {
 };
 
 export const useCalendar = ({ locale = 'default', selectedDate: date, firstWeekDayNumber = 2 }: IUseCalendarProps) => {
-  const [mode, setMode] = React.useState<'days' | 'months' | 'years'>('days');
-  const [selectedDay, setSelectedDay] = React.useState(createDate({ date }));
-  const [selectedMonth, setSelectedMonth] = React.useState(
+  const [mode, setMode] = useState<'days' | 'months' | 'years'>('days');
+  const [selectedDay, setSelectedDay] = useState(createDate({ date }));
+  const [selectedMonth, setSelectedMonth] = useState(
     createMonth({ date: new Date(selectedDay.year, selectedDay.monthIndex), locale }),
   );
-  const [selectedYear, setSelectedYear] = React.useState(selectedDay.year);
-  const [selectedYearsInterval, setSelectedYearsInterval] = React.useState(getYearsInterval(selectedDay.year));
+  const [selectedYear, setSelectedYear] = useState(selectedDay.year);
+  const [selectedYearsInterval, setSelectedYearsInterval] = useState(getYearsInterval(selectedDay.year));
 
   const monthesNames = useMemo(() => getMonthesNames(locale), []);
   const weekDaysNames = useMemo(() => getWeekDaysNames(firstWeekDayNumber, locale), []);

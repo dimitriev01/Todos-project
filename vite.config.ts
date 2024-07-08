@@ -15,11 +15,5 @@ export default defineConfig(() => {
     resolve: {
       alias,
     },
-    css: {
-      modules: {
-        localsConvention: 'dashesOnly',
-        generateScopedName: '[local]_[hash:base64:2]',
-      },
-    },
   } as UserConfig;
 });
