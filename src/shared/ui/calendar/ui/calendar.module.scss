@@ -2,12 +2,12 @@
   width: 31.25rem;
   border-radius: 0.3125rem;
   text-transform: capitalize;
-  background-color: #f0f0f0;
+  background-color: #fff5f5;
 
   &__header {
     position: relative;
     border-radius: 0.3125rem 0.3125rem 0 0;
-    background-color: #fefefe;
+    background-color: #ffa7a7;
     padding: 0.625rem;
     display: flex;
     justify-content: center;
@@ -20,10 +20,6 @@
       grid-template-columns: repeat(3, 1fr);
       align-items: center;
       justify-items: center;
-    }
-
-    &__date {
-      cursor: pointer;
     }
 
     &__arrow-left,
@@ -61,12 +57,15 @@
       display: grid;
       grid-template-columns: repeat(7, 1fr);
       gap: 0.0625rem 0.0625rem;
+
+      & > td {
+        text-transform: uppercase;
+      }
     }
 
     &__days {
       font-size: 0.625rem;
       font-weight: 400;
-      color: #434334;
       text-align: center;
       display: grid;
       text-align: center;
@@ -84,30 +83,34 @@
           padding: 0.3438rem;
           font-weight: 300;
           cursor: pointer;
-          color: rgb(144, 144, 144);
+          color: #bcbcbc;
         }
 
         &_selected {
-          color: #333;
-          background-color: #ffe684;
-          &:hover {
-            background-color: greenyellow;
+          color: var(--calendar-text-color);
+          background-color: var(--calendar-item-selected);
+
+          @media (hover: hover) {
+            &:hover {
+              background-color: var(--calendar-item-hover);
+            }
           }
         }
 
         &_today {
-          background-color: lightgreen;
+          background-color: var(--calendar-item-active);
         }
 
-        &:hover {
-          background-color: rgb(255, 138, 138);
+        @media (hover: hover) {
+          &:hover {
+            background-color: var(--calendar-item-hover);
+          }
         }
       }
     }
 
     &__months {
       font-weight: 400;
-      color: #111;
       text-align: center;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -124,25 +127,23 @@
         border-radius: 0.3125rem;
 
         &_selected {
-          color: #333;
+          background-color: var(--calendar-item-selected);
+        }
+
+        @media (hover: hover) {
           &:hover {
-            background-color: greenyellow;
+            background-color: var(--calendar-item-hover);
           }
         }
 
         &_current {
-          color: #333;
-          background-color: #ffe684;
-          &:hover {
-            background-color: greenyellow;
-          }
+          background-color: var(--calendar-item-active);
         }
       }
     }
 
     &__years {
       font-weight: 400;
-      color: #111;
       text-align: center;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -150,34 +151,41 @@
       gap: 0.0625rem 0.0625rem;
       font-size: 0.75rem;
 
+      &__year {
+        padding: 0.5625rem 0rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        border-radius: 0.3125rem;
+
+        &_selected {
+          background-color: var(--calendar-item-selected);
+        }
+
+        @media (hover: hover) {
+          &:hover {
+            background-color: var(--calendar-item-hover);
+          }
+        }
+
+        &_today {
+          background-color: var(--calendar-item-active);
+        }
+
+        @media (hover: hover) {
+          &:hover {
+            background-color: var(--calendar-item-hover);
+          }
+        }
+      }
+
       &__unchoosable-year {
         font-weight: 300;
         padding: 0.5625rem 1rem;
-        color: #eee;
+        opacity: 0.7;
 
-        &__year {
-          padding: 0.5625rem 0rem;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          cursor: pointer;
-          border-radius: 0.3125rem;
-
-          &_selected {
-            color: #333;
-            background-color: #ffe684;
-            &:hover {
-              background-color: greenyellow;
-            }
-          }
-
-          &_today {
-            background-color: lightgreen;
-          }
-
-          &:hover {
-            background-color: #ef3f3f;
-          }
+        @media (hover: hover) {
         }
       }
     }

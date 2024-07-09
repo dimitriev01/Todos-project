@@ -16,31 +16,31 @@ export const Calendar = (props: ICalendarProps) => {
       <thead className={cls.calendar__header}>
         <tr>
           <td aria-hidden>
-            <span className={cls['calendar__header__arrow-left']} onClick={() => functions.onClickArrow('left')} />
+            <button className={cls['calendar__header__arrow-left']} onClick={() => functions.onClickArrow('left')} />
           </td>
           <td aria-hidden className={cls[state.mode !== 'days' ? 'calendar__header__days' : '']}>
             {state.mode === 'days' && (
-              <p onClick={() => functions.setMode('months')} className={cls.calendar__header__date}>
+              <button onClick={() => functions.setMode('months')} className={cls.calendar__header__date}>
                 {state.monthesNames[state.selectedMonth.monthIndex].month} {state.selectedYear}
-              </p>
+              </button>
             )}
           </td>
           <td className={cls[state.mode !== 'months' ? 'calendar__header__months' : '']}>
             {state.mode === 'months' && (
-              <p onClick={() => functions.setMode('years')} className={cls.calendar__header__date}>
+              <button onClick={() => functions.setMode('years')} className={cls.calendar__header__date}>
                 {state.selectedYear}
-              </p>
+              </button>
             )}
           </td>
           <td className={cls[state.mode !== 'years' ? 'calendar__header__years' : '']}>
             {state.mode === 'years' && (
-              <p>
+              <button>
                 {state.selectedYearsInterval[0]} - {state.selectedYearsInterval[state.selectedYearsInterval.length - 1]}
-              </p>
+              </button>
             )}
           </td>
           <td aria-hidden>
-            <span className={cls['calendar__header__arrow-right']} onClick={() => functions.onClickArrow('right')} />
+            <button className={cls['calendar__header__arrow-right']} onClick={() => functions.onClickArrow('right')} />
           </td>
         </tr>
       </thead>
@@ -73,7 +73,7 @@ export const Calendar = (props: ICalendarProps) => {
                       isAdditionalDay ? cls['calendar__body__days__day_additional-day'] : '',
                     ].join(' ')}
                   >
-                    {day.dayNumber}
+                    <button>{day.dayNumber}</button>
                   </td>
                 );
               })}
@@ -102,7 +102,7 @@ export const Calendar = (props: ICalendarProps) => {
                     isCurrentMonth ? cls.calendar__body__months__month_current : '',
                   ].join(' ')}
                 >
-                  {monthesName.monthShort}
+                  <button>{monthesName.monthShort}</button>
                 </td>
               );
             })}
@@ -111,13 +111,13 @@ export const Calendar = (props: ICalendarProps) => {
 
         {state.mode === 'years' && (
           <tr className={cls.calendar__body__years}>
-            <td className={cls['calendar__body__unchoosable-year']}>{state.selectedYearsInterval[0] - 1}</td>
+            <td className={cls['calendar__body__years__unchoosable-year']}>{state.selectedYearsInterval[0] - 1}</td>
             {state.selectedYearsInterval.map((year) => {
               const isCurrentYear = new Date().getFullYear() === year;
               const isSelectedYear = year === state.selectedYear;
 
               return (
-                <div
+                <td
                   key={year}
                   aria-hidden
                   onClick={() => {
@@ -125,16 +125,16 @@ export const Calendar = (props: ICalendarProps) => {
                     functions.setMode('months');
                   }}
                   className={[
-                    cls['calendar__body__unchoosable-year__year'],
-                    isCurrentYear ? cls['calendar__body__years__unchoosable-year__year_current'] : '',
-                    isSelectedYear ? cls['calendar__body__years__unchoosable-year__year_selected'] : '',
+                    cls['calendar__body__years__year'],
+                    isCurrentYear ? cls['calendar__body__years__year_current'] : '',
+                    isSelectedYear ? cls['calendar__body__years__year_selected'] : '',
                   ].join(' ')}
                 >
-                  {year}
-                </div>
+                  <button>{year}</button>
+                </td>
               );
             })}
-            <td className={cls.calendar__unchoosable__year}>
+            <td className={cls['calendar__body__years__unchoosable-year']}>
               {state.selectedYearsInterval[state.selectedYearsInterval.length - 1] + 1}
             </td>
           </tr>
