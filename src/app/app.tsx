@@ -1,7 +1,7 @@
 import { Calendar } from 'shared/ui/calendar';
 import { useState } from 'react';
-import 'shared/styles/styles.scss';
 import { Layout } from 'shared/ui/layout';
+import 'shared/styles/styles.scss';
 
 export const App = () => {
   const [selectedDate, setSelectedDay] = useState(new Date());

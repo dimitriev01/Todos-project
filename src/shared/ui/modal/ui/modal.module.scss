@@ -1,0 +1,37 @@
+.modal {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+  display: none;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: var(--z-index-modal);
+
+  &__content {
+    box-shadow: 0px 0.3125rem 0.625rem 0px rgba(0, 0, 0, 0.5);
+    position: relative;
+    border-radius: 0.9375rem;
+    background: white;
+    width: 100%;
+    max-width: 25rem;
+
+    &__title {
+      border-top-left-radius: 0.625rem;
+      border-top-right-radius: 0.625rem;
+      padding: 0.625rem;
+      color: #fff;
+      background: grey;
+    }
+
+    @media (max-width: 48rem) {
+      margin: 0 1.25rem;
+    }
+  }
+
+  &_active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
