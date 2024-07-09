@@ -1,6 +1,13 @@
 import { create } from 'zustand';
-import { getAllTasksRequest, deleteTaskRequest, toggleTaskRequest, addTaskRequest } from '../api/task.api';
-import { IAddTaskRequestParams, IDeleteTaskRequestParams, ITasksStore, IToggleTaskRequestParams } from './task.types';
+import { deleteTaskRequest, toggleTaskRequest, addTaskRequest, getAllTasksRequest, getTasksForWeekRequest } from '../api/task.api';
+import {
+  IAddTaskRequestParams,
+  IDeleteTaskRequestParams,
+  IGetAllTaskRequestParams,
+  IGetTasksForWeekRequestParams,
+  ITasksStore,
+  IToggleTaskRequestParams,
+} from './task.types';
 
 export const useTasksStore = create<ITasksStore>()((set, get) => ({
   tasks: [],
@@ -21,7 +28,7 @@ export const useTasksStore = create<ITasksStore>()((set, get) => ({
   deleteTask: async (params: IDeleteTaskRequestParams) => {
     try {
       set({ isLoading: true });
-      await deleteTaskRequest({ id: params.id });
+      await deleteTaskRequest(params);
       set({
         tasks: get().tasks.filter((task) => task.id !== params.id),
       });
@@ -45,11 +52,24 @@ export const useTasksStore = create<ITasksStore>()((set, get) => ({
       set({ isLoading: false });
     }
   },
-  fetchTasks: async () => {
+  fetchTasks: async (params: IGetAllTaskRequestParams) => {
     try {
       set({ isLoading: true });
 
-      const response = await getAllTasksRequest();
+      const response = await getAllTasksRequest(params);
+
+      set({ tasks: response });
+    } catch (e: any) {
+      console.log(e);
+    } finally {
+      set({ isLoading: false });
+    }
+  },
+  fetchTasksForWeek: async (params: IGetTasksForWeekRequestParams) => {
+    try {
+      set({ isLoading: true });
+
+      const response = await getTasksForWeekRequest(params);
 
       set({ tasks: response });
     } catch (e: any) {

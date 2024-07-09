@@ -22,6 +22,12 @@
       padding: 0.625rem;
       color: #fff;
       background: grey;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__text {
+      padding: 1.25rem;
     }
 
     @media (max-width: 48rem) {

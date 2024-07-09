@@ -1,9 +1,10 @@
-import { useCalendar } from 'shared/lib/hooks/use-calendar';
+import { useCalendar } from 'shared/lib/hooks';
 import { checkDateIsEqual, checkIsToday } from 'shared/helpers/date';
 import { ICalendarProps } from '../model/calendar.types';
 import cls from './calendar.module.scss';
 import { Modal } from 'shared/ui/modal';
 import { useState } from 'react';
+import { TaskList } from 'features/task-list';
 
 export const Calendar = (props: ICalendarProps) => {
   const [modalDay, setModalDay] = useState<boolean>(false);
@@ -15,7 +16,7 @@ export const Calendar = (props: ICalendarProps) => {
   });
 
   return (
-    <>
+    <section>
       <table className={cls.calendar}>
         <thead className={cls.calendar__header}>
           <tr>
@@ -151,8 +152,8 @@ export const Calendar = (props: ICalendarProps) => {
         </tbody>
       </table>
       <Modal visible={modalDay} setVisible={setModalDay} title={'Список задач'}>
-        <>Список</>
+        <TaskList date={date.toISOString().split('T')[0]} />
       </Modal>
-    </>
+    </section>
   );
 };

@@ -1,10 +1,22 @@
 import { api } from 'shared/api';
-import { IAddTaskRequestParams, IDeleteTaskRequestParams, IToggleTaskRequestParams, ITask } from '../model/task.types';
+import {
+  IAddTaskRequestParams,
+  IDeleteTaskRequestParams,
+  IToggleTaskRequestParams,
+  ITask,
+  IGetAllTaskRequestParams,
+  IGetTasksForWeekRequestParams,
+} from '../model/task.types';
 
 const baseURL = '/tasks';
 
-export const getAllTasksRequest = async (): Promise<ITask[]> => {
-  const response = await api.get(`${baseURL}`);
+export const getAllTasksRequest = async (params: IGetAllTaskRequestParams): Promise<ITask[]> => {
+  const response = await api.get(`${baseURL}?date=${params.date}`);
+  return response.data;
+};
+
+export const getTasksForWeekRequest = async (params: IGetTasksForWeekRequestParams): Promise<ITask[]> => {
+  const response = await api.get(`${baseURL}?startDate=${params.startDate}?endDate=${params.startDate}`);
   return response.data;
 };
 

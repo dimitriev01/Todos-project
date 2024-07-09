@@ -12,22 +12,28 @@ export interface ITask {
   title: string;
   status: EnumTaskStatus;
   description: string;
+  date: string;
 }
 
 export interface IDeleteTaskRequestParams {
   id: string;
 }
 
+export interface IGetTasksForWeekRequestParams {
+  startDate: string;
+  endDate: string;
+}
+
 export interface IAddTaskRequestParams {
-  data: ITask;
+  task: ITask;
 }
 
 export interface IToggleTaskRequestParams {
   id: string;
 }
 
-export interface IToggleIsFavouriteTaskParams {
-  id: number;
+export interface IGetAllTaskRequestParams {
+  date: string;
 }
 
 export interface ITasksStore {
@@ -36,5 +42,5 @@ export interface ITasksStore {
   addTask: (params: IAddTaskRequestParams) => void;
   deleteTask: (params: IDeleteTaskRequestParams) => void;
   toggleTask: (params: IToggleTaskRequestParams) => void;
-  fetchTasks: () => void;
+  fetchTasks: (params: IGetAllTaskRequestParams) => void;
 }

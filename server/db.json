@@ -1,7 +1,25 @@
 {
   "tasks": [
-    { "id": "1", "title": "Do something 1", "status": "active", "description": "More info about doing something 1" },
-    { "id": "2", "title": "Do something 2", "status": "active", "description": "More info about doing something 2" },
-    { "id": "3", "title": "Do something 3", "status": "active", "description": "More info about doing something 3" }
+    {
+      "id": "1",
+      "title": "Do something 1",
+      "status": "active",
+      "description": "More info about doing something 1",
+      "date": "2024-07-09"
+    },
+    {
+      "id": "2",
+      "title": "Do something 2",
+      "status": "active",
+      "description": "More info about doing something 2",
+      "date": "2024-07-08"
+    },
+    {
+      "id": "3",
+      "title": "Do something 3",
+      "status": "active",
+      "description": "More info about doing something 3",
+      "date": "2024-07-07"
+    }
   ]
 }

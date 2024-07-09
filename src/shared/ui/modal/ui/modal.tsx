@@ -40,8 +40,11 @@ export const Modal = (props: IModalProps) => {
   return createPortal(
     <div className={`${cls.modal} ${visible ? cls.modal_active : ''}`}>
       <div ref={modalContentRef} className={cls.modal__content}>
-        <div className={cls.modal__content__title}>{title}</div>
-        {children}
+        <div className={cls.modal__content__title}>
+          {title}
+          <button onClick={() => setVisible(false)}>X</button>
+        </div>
+        <div className={cls.modal__content__text}>{children}</div>
       </div>
     </div>,
     document.body,
