@@ -1,5 +1,11 @@
 import { create } from 'zustand';
-import { deleteTaskRequest, toggleTaskRequest, addTaskRequest, getAllTasksRequest, getTasksForWeekRequest } from '../api/task.api';
+import {
+  deleteTaskRequest,
+  toggleTaskRequest,
+  addTaskRequest,
+  getAllTasksRequest,
+  getTasksForWeekRequest,
+} from '../api/task.api';
 import {
   IAddTaskRequestParams,
   IDeleteTaskRequestParams,

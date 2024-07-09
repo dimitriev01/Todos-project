@@ -43,4 +43,5 @@ export interface ITasksStore {
   deleteTask: (params: IDeleteTaskRequestParams) => void;
   toggleTask: (params: IToggleTaskRequestParams) => void;
   fetchTasks: (params: IGetAllTaskRequestParams) => void;
+  fetchTasksForWeek: (params: IGetTasksForWeekRequestParams) => void;
 }

@@ -14,6 +14,7 @@ export const Calendar = (props: ICalendarProps) => {
     selectedDate: date,
     firstWeekDayNumber,
   });
+  const formattedDate = new Date(date).toLocaleDateString();
 
   return (
     <section>
@@ -152,7 +153,7 @@ export const Calendar = (props: ICalendarProps) => {
         </tbody>
       </table>
       <Modal visible={modalDay} setVisible={setModalDay} title={'Список задач'}>
-        <TaskList date={date.toISOString().split('T')[0]} />
+        <TaskList date={formattedDate.replace(/\./g, '-')} />
       </Modal>
     </section>
   );
