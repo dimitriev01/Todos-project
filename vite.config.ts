@@ -1,4 +1,4 @@
-import { defineConfig, UserConfig, AliasOptions } from 'vite';
+import { defineConfig, AliasOptions } from 'vite';
 import react from '@vitejs/plugin-react';
 
 const alias: AliasOptions = [
