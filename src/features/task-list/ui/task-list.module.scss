@@ -4,7 +4,8 @@
   row-gap: 0.625rem;
 
   &__item {
-    padding: 0.625rem;
-    box-shadow: 0.125rem 0.125rem 0.25rem #0000001a;
+    border-radius: 0.3125rem;
+    padding: 0.9375rem;
+    box-shadow: 0.125rem 0.125rem 0.125rem 0.125rem #0000001a;
   }
 }

@@ -12,7 +12,7 @@ export const TaskList = (props: ITaskListProps) => {
   }, []);
 
   if (!tasks.length) {
-    return <p>No tasks!</p>;
+    return <p>Нет задач!</p>;
   }
 
   return (

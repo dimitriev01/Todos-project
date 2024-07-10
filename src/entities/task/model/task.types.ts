@@ -3,8 +3,8 @@ export interface ITaskParams {
 }
 
 export enum EnumTaskStatus {
-  ACTIVE = 'active',
-  COMPLETED = 'completed',
+  ACTIVE = 'Активна',
+  COMPLETED = 'Выполнена',
 }
 
 export interface ITask {

@@ -1,0 +1,15 @@
+@import '../../../styles/device-sizes.scss';
+
+.input {
+  border: 0.125rem solid var(--additional-text-color);
+  outline: none;
+  padding: 0.5rem 0.75rem;
+
+  @media (max-width: $device-size-tablet) {
+    padding: 0.3125rem 0.625rem;
+  }
+
+  &:focus {
+    border-color: var(--main-background);
+  }
+}

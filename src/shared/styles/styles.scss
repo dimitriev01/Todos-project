@@ -1,5 +1,6 @@
 @import './reset.scss';
 @import './colors.scss';
+@import './device-sizes.scss';
 @import './variables.scss';
 
 body {
@@ -10,7 +11,7 @@ body {
 ::-webkit-scrollbar {
   width: 0.5rem;
 
-  @media (max-width: 48rem) {
+  @media (max-width: $device-size-tablet) {
     width: 0.25rem;
   }
 }

@@ -1,5 +1,10 @@
+import { ChangeEvent } from 'react';
+
 export interface ISelectProps {
+  name: string;
+  id: string;
   values: string[];
   value: string;
-  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
+  className?: string;
 }

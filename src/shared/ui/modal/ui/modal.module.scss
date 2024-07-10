@@ -1,3 +1,5 @@
+@import '../../../styles/device-sizes.scss';
+
 .modal {
   position: fixed;
   bottom: 0;
@@ -7,20 +9,26 @@
   display: none;
   background: rgba(0, 0, 0, 0.4);
   z-index: var(--z-index-modal);
+  padding: 1.25rem;
+
+  @media (max-width: $device-size-tablet) {
+    padding: 0.625rem;
+  }
 
   &__content {
-    box-shadow: 0px 0.3125rem 0.625rem 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 0rem 0.3125rem 0.625rem 0rem rgba(0, 0, 0, 0.5);
     position: relative;
     border-radius: 0.9375rem;
-    background: white;
+    background: #fff;
     width: 100%;
-    max-width: 25rem;
+    max-width: 37.5rem;
+    overflow-y: auto;
+    height: 100%;
 
     &__title {
       border-top-left-radius: 0.625rem;
       border-top-right-radius: 0.625rem;
-      padding: 0.625rem;
-      color: #fff;
+      padding: 0.625rem 0.625rem 0.625rem 1.25rem;
       background: var(--main-background);
       display: flex;
       justify-content: space-between;
@@ -33,7 +41,7 @@
       padding: 1.25rem;
     }
 
-    @media (max-width: 48rem) {
+    @media (max-width: $device-size-tablet) {
       margin: 0 1.25rem;
     }
   }

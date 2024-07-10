@@ -1,0 +1,14 @@
+@import '../../../styles/device-sizes.scss';
+
+.button {
+  max-width: 12.5rem;
+  width: max-content;
+  border-radius: 0.3125rem;
+  text-align: center;
+  padding: 0.5rem 1.25rem;
+  background-color: var(--main-background);
+
+  @media (max-width: $device-size-tablet) {
+    padding: 0.3125rem 0.625rem;
+  }
+}
