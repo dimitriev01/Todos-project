@@ -1,6 +1,7 @@
 import { Task, useTasksStore } from 'entities/task';
 import { useEffect } from 'react';
 import { ITaskListProps } from '../model/task-list.types';
+import cls from './task-list.module.scss';
 
 export const TaskList = (props: ITaskListProps) => {
   const { date } = props;
@@ -15,9 +16,9 @@ export const TaskList = (props: ITaskListProps) => {
   }
 
   return (
-    <ul>
+    <ul className={cls['task-list']}>
       {tasks.map((task) => (
-        <li key={task.id}>
+        <li className={cls['task-list__item']} key={task.id}>
           <Task task={task} />
         </li>
       ))}

@@ -1,0 +1,10 @@
+.task-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.625rem;
+
+  &__item {
+    padding: 0.625rem;
+    box-shadow: 0.125rem 0.125rem 0.25rem #0000001a;
+  }
+}

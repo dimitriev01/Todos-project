@@ -1,10 +1,11 @@
 import { useCalendar } from 'shared/lib/hooks';
-import { checkDateIsEqual, checkIsToday } from 'shared/helpers/date';
+import { checkDateIsEqual, checkIsToday, formatDate } from 'shared/helpers/date';
 import { ICalendarProps } from '../model/calendar.types';
 import cls from './calendar.module.scss';
 import { Modal } from 'shared/ui/modal';
 import { useState } from 'react';
 import { TaskList } from 'features/task-list';
+import { TaskForm } from 'features/task-form';
 
 export const Calendar = (props: ICalendarProps) => {
   const [modalDay, setModalDay] = useState<boolean>(false);
@@ -14,7 +15,7 @@ export const Calendar = (props: ICalendarProps) => {
     selectedDate: date,
     firstWeekDayNumber,
   });
-  const formattedDate = new Date(date).toLocaleDateString();
+  const formattedDate = formatDate(date, 'DD-MM-YYYY');
 
   return (
     <section>
@@ -153,7 +154,8 @@ export const Calendar = (props: ICalendarProps) => {
         </tbody>
       </table>
       <Modal visible={modalDay} setVisible={setModalDay} title={'Список задач'}>
-        <TaskList date={formattedDate.replace(/\./g, '-')} />
+        <TaskForm />
+        <TaskList date={formattedDate} />
       </Modal>
     </section>
   );

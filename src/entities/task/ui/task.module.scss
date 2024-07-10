@@ -1,0 +1,22 @@
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 0.625rem;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.3125rem;
+
+    &__item {
+      display: flex;
+      flex-direction: column;
+      row-gap: 0.3125rem;
+    }
+  }
+
+  &__delete-btn {
+    color: red;
+  }
+}

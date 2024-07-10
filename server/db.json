@@ -1,25 +1,18 @@
 {
   "tasks": [
     {
-      "id": "1",
-      "title": "Do something 1",
+      "id": "1720604862614",
+      "title": "1",
       "status": "active",
-      "description": "More info about doing something 1",
-      "date": "09-07-2024"
+      "description": "1",
+      "date": "10-07-2024"
     },
     {
-      "id": "2",
-      "title": "Do something 2",
+      "id": "1720605091527",
+      "title": "1",
       "status": "active",
-      "description": "More info about doing something 2",
-      "date": "08-07-2024"
-    },
-    {
-      "id": "3",
-      "title": "Do something 3",
-      "status": "active",
-      "description": "More info about doing something 3",
-      "date": "07-07-2024"
+      "description": "1",
+      "date": "10-07-2024"
     }
   ]
 }

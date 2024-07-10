@@ -7,7 +7,7 @@
   &__header {
     position: relative;
     border-radius: 0.3125rem 0.3125rem 0 0;
-    background-color: #ffa7a7;
+    background-color: var(--main-background);
     padding: 0.625rem;
     display: flex;
     justify-content: center;

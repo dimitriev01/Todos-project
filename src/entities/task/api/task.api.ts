@@ -1,8 +1,6 @@
 import { api } from 'shared/api';
 import {
-  IAddTaskRequestParams,
   IDeleteTaskRequestParams,
-  IToggleTaskRequestParams,
   ITask,
   IGetAllTaskRequestParams,
   IGetTasksForWeekRequestParams,
@@ -16,21 +14,21 @@ export const getAllTasksRequest = async (params: IGetAllTaskRequestParams): Prom
 };
 
 export const getTasksForWeekRequest = async (params: IGetTasksForWeekRequestParams): Promise<ITask[]> => {
-  const response = await api.get(`${baseURL}?startDate=${params.startDate}?endDate=${params.startDate}`);
+  const response = await api.get(`${baseURL}`, { data: params });
   return response.data;
 };
 
-export const deleteTaskRequest = async (params: IDeleteTaskRequestParams): Promise<number> => {
+export const deleteTaskRequest = async (params: IDeleteTaskRequestParams): Promise<ITask> => {
   const response = await api.delete(`${baseURL}/${params.id}`);
   return response.data;
 };
 
-export const toggleTaskRequest = async (params: IToggleTaskRequestParams): Promise<ITask> => {
-  const response = await api.put(`${baseURL}/${params.id}`, { data: params });
+export const editTaskRequest = async (params: ITask): Promise<ITask> => {
+  const response = await api.put(`${baseURL}/${params.id}`, params);
   return response.data;
 };
 
-export const addTaskRequest = async (params: IAddTaskRequestParams): Promise<ITask> => {
-  const response = await api.post(`${baseURL}`, { data: params });
+export const addTaskRequest = async (params: ITask): Promise<ITask> => {
+  const response = await api.post(`${baseURL}`, params);
   return response.data;
 };

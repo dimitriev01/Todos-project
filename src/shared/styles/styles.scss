@@ -2,6 +2,11 @@
 @import './colors.scss';
 @import './variables.scss';
 
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 0.875rem;
+}
+
 ::-webkit-scrollbar {
   width: 0.5rem;
 

@@ -24,14 +24,6 @@ export interface IGetTasksForWeekRequestParams {
   endDate: string;
 }
 
-export interface IAddTaskRequestParams {
-  task: ITask;
-}
-
-export interface IToggleTaskRequestParams {
-  id: string;
-}
-
 export interface IGetAllTaskRequestParams {
   date: string;
 }
@@ -39,9 +31,9 @@ export interface IGetAllTaskRequestParams {
 export interface ITasksStore {
   tasks: ITask[];
   isLoading: boolean;
-  addTask: (params: IAddTaskRequestParams) => void;
+  addTask: (params: ITask) => void;
   deleteTask: (params: IDeleteTaskRequestParams) => void;
-  toggleTask: (params: IToggleTaskRequestParams) => void;
+  editTask: (params: ITask) => void;
   fetchTasks: (params: IGetAllTaskRequestParams) => void;
   fetchTasksForWeek: (params: IGetTasksForWeekRequestParams) => void;
 }

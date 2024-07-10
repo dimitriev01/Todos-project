@@ -1,24 +1,23 @@
 import { create } from 'zustand';
 import {
   deleteTaskRequest,
-  toggleTaskRequest,
+  editTaskRequest,
   addTaskRequest,
   getAllTasksRequest,
   getTasksForWeekRequest,
 } from '../api/task.api';
 import {
-  IAddTaskRequestParams,
   IDeleteTaskRequestParams,
   IGetAllTaskRequestParams,
   IGetTasksForWeekRequestParams,
+  ITask,
   ITasksStore,
-  IToggleTaskRequestParams,
 } from './task.types';
 
 export const useTasksStore = create<ITasksStore>()((set, get) => ({
   tasks: [],
   isLoading: false,
-  addTask: async (params: IAddTaskRequestParams) => {
+  addTask: async (params: ITask) => {
     try {
       set({ isLoading: true });
       const response = await addTaskRequest(params);
@@ -44,13 +43,13 @@ export const useTasksStore = create<ITasksStore>()((set, get) => ({
       set({ isLoading: false });
     }
   },
-  toggleTask: async (params: IToggleTaskRequestParams) => {
+  editTask: async (params: ITask) => {
     try {
       set({ isLoading: true });
-      const response = await toggleTaskRequest(params);
+      const response = await editTaskRequest(params);
 
       set((state) => ({
-        tasks: state.tasks.map((task) => (task.id === params.id ? { ...task, status: response.status } : task)),
+        tasks: state.tasks.map((task) => (task.id === params.id ? response : task)),
       }));
     } catch (e: any) {
       console.log(e);

@@ -21,12 +21,15 @@
       border-top-right-radius: 0.625rem;
       padding: 0.625rem;
       color: #fff;
-      background: grey;
+      background: var(--main-background);
       display: flex;
       justify-content: space-between;
     }
 
     &__text {
+      display: flex;
+      flex-direction: column;
+      row-gap: 0.625rem;
       padding: 1.25rem;
     }
 

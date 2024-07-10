@@ -1,0 +1,19 @@
+.task-form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.625rem;
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.3125rem;
+
+    & > button {
+      max-width: 6.25rem;
+      border-radius: 0.3125rem;
+      text-align: center;
+      padding: 0.3125rem 0.625rem;
+      background-color: var(--main-background);
+    }
+  }
+}
