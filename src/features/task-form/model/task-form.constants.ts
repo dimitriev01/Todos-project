@@ -7,3 +7,5 @@ export const taskFormDefaultFields = {
   description: '',
   date: '',
 };
+
+export const validTaskForm = { description: '', title: '' };

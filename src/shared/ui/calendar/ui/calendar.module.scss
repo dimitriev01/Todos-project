@@ -1,5 +1,5 @@
 .calendar {
-  width: 31.25rem;
+  width: 100%;
   border-radius: 0.3125rem;
   text-transform: capitalize;
   background-color: #fff5f5;
@@ -20,20 +20,6 @@
       grid-template-columns: repeat(3, 1fr);
       align-items: center;
       justify-items: center;
-    }
-
-    &__arrow-left,
-    &__arrow-right {
-      display: block;
-      width: 0.9375rem;
-      height: 0.625rem;
-      cursor: pointer;
-      background-image: url('../assets/arrow-left.svg');
-      background-repeat: no-repeat;
-    }
-
-    &__arrow-right {
-      transform: rotate(-180deg);
     }
 
     &__months,
@@ -190,4 +176,9 @@
       }
     }
   }
+}
+
+section {
+  width: 100%;
+  max-width: 31.25rem;
 }

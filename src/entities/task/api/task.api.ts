@@ -4,31 +4,35 @@ import {
   ITask,
   IGetAllTaskRequestParams,
   IGetTasksForWeekRequestParams,
+  IEditTaskRequestParams,
+  IAddTaskRequestParams,
 } from '../model/task.types';
 
-const baseURL = '/tasks';
+const baseURLTasks = '/tasks';
 
 export const getAllTasksRequest = async (params: IGetAllTaskRequestParams): Promise<ITask[]> => {
-  const response = await api.get(`${baseURL}?date=${params.date}`);
+  const response = await api.get(`${baseURLTasks}?userId=${params.userId}?date=${params.date}`);
   return response.data;
 };
 
 export const getTasksForWeekRequest = async (params: IGetTasksForWeekRequestParams): Promise<ITask[]> => {
-  const response = await api.get(`${baseURL}`, { data: params });
+  const response = await api.get(`${baseURLTasks}?userId=${params.userId}`, {
+    data: { startDate: params.startDate, endDate: params.endDate },
+  });
   return response.data;
 };
 
 export const deleteTaskRequest = async (params: IDeleteTaskRequestParams): Promise<ITask> => {
-  const response = await api.delete(`${baseURL}/${params.id}`);
+  const response = await api.delete(`${baseURLTasks}/${params.taskId}`);
   return response.data;
 };
 
-export const editTaskRequest = async (params: ITask): Promise<ITask> => {
-  const response = await api.put(`${baseURL}/${params.id}`, params);
+export const editTaskRequest = async (params: IEditTaskRequestParams): Promise<ITask> => {
+  const response = await api.put(`${baseURLTasks}/${params.task.id}`, params.task);
   return response.data;
 };
 
-export const addTaskRequest = async (params: ITask): Promise<ITask> => {
-  const response = await api.post(`${baseURL}`, params);
+export const addTaskRequest = async (params: IAddTaskRequestParams): Promise<ITask> => {
+  const response = await api.post(`${baseURLTasks}`, params.task);
   return response.data;
 };

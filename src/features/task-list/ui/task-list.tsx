@@ -2,13 +2,20 @@ import { Task, useTasksStore } from 'entities/task';
 import { useEffect } from 'react';
 import { ITaskListProps } from '../model/task-list.types';
 import cls from './task-list.module.scss';
+import { useUserStore } from 'entities/user';
 
 export const TaskList = (props: ITaskListProps) => {
   const { date } = props;
   const { tasks, fetchTasks } = useTasksStore();
+  const { user } = useUserStore();
 
   useEffect(() => {
-    fetchTasks({ date });
+    if (user) {
+      fetchTasks({
+        userId: user.id,
+        date,
+      });
+    }
   }, []);
 
   if (!tasks.length) {

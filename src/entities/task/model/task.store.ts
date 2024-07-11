@@ -7,17 +7,18 @@ import {
   getTasksForWeekRequest,
 } from '../api/task.api';
 import {
+  IAddTaskRequestParams,
   IDeleteTaskRequestParams,
+  IEditTaskRequestParams,
   IGetAllTaskRequestParams,
   IGetTasksForWeekRequestParams,
-  ITask,
   ITasksStore,
 } from './task.types';
 
 export const useTasksStore = create<ITasksStore>()((set, get) => ({
   tasks: [],
   isLoading: false,
-  addTask: async (params: ITask) => {
+  addTask: async (params: IAddTaskRequestParams) => {
     try {
       set({ isLoading: true });
       const response = await addTaskRequest(params);
@@ -35,7 +36,7 @@ export const useTasksStore = create<ITasksStore>()((set, get) => ({
       set({ isLoading: true });
       await deleteTaskRequest(params);
       set({
-        tasks: get().tasks.filter((task) => task.id !== params.id),
+        tasks: get().tasks.filter((task) => task.id !== params.taskId),
       });
     } catch (e: any) {
       console.log(e);
@@ -43,13 +44,13 @@ export const useTasksStore = create<ITasksStore>()((set, get) => ({
       set({ isLoading: false });
     }
   },
-  editTask: async (params: ITask) => {
+  editTask: async (params: IEditTaskRequestParams) => {
     try {
       set({ isLoading: true });
       const response = await editTaskRequest(params);
 
       set((state) => ({
-        tasks: state.tasks.map((task) => (task.id === params.id ? response : task)),
+        tasks: state.tasks.map((task) => (task.id === params.task.id ? response : task)),
       }));
     } catch (e: any) {
       console.log(e);

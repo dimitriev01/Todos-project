@@ -1,7 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { IModalProps } from '../model/modal.types';
-import cls from './modal.module.scss';
+import { IoClose } from 'react-icons/io5';
 import { createPortal } from 'react-dom';
+import cls from './modal.module.scss';
 
 export const Modal = (props: IModalProps) => {
   const { setVisible, visible, title, children } = props;
@@ -42,7 +43,9 @@ export const Modal = (props: IModalProps) => {
       <div ref={modalContentRef} className={cls.modal__content}>
         <div className={cls.modal__content__title}>
           {title}
-          <button onClick={() => setVisible(false)}>X</button>
+          <button onClick={() => setVisible(false)}>
+            <IoClose size='30' />
+          </button>
         </div>
         <div className={cls.modal__content__text}>{children}</div>
       </div>

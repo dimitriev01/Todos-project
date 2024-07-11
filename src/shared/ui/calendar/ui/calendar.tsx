@@ -1,11 +1,12 @@
 import { useCalendar } from 'shared/lib/hooks';
 import { checkDateIsEqual, checkIsToday, formatDate } from 'shared/helpers/date';
 import { ICalendarProps } from '../model/calendar.types';
-import cls from './calendar.module.scss';
 import { Modal } from 'shared/ui/modal';
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { useState } from 'react';
 import { TaskList } from 'features/task-list';
 import { TaskForm } from 'features/task-form';
+import cls from './calendar.module.scss';
 
 export const Calendar = (props: ICalendarProps) => {
   const [modalDay, setModalDay] = useState<boolean>(false);
@@ -23,7 +24,7 @@ export const Calendar = (props: ICalendarProps) => {
         <thead className={cls.calendar__header}>
           <tr>
             <td aria-hidden>
-              <button className={cls['calendar__header__arrow-left']} onClick={() => functions.onClickArrow('left')} />
+              <FaArrowLeft cursor='pointer' onClick={() => functions.onClickArrow('left')} />
             </td>
             <td aria-hidden className={cls[state.mode !== 'days' ? 'calendar__header__days' : '']}>
               {state.mode === 'days' && (
@@ -48,10 +49,7 @@ export const Calendar = (props: ICalendarProps) => {
               )}
             </td>
             <td aria-hidden>
-              <button
-                className={cls['calendar__header__arrow-right']}
-                onClick={() => functions.onClickArrow('right')}
-              />
+              <FaArrowRight cursor='pointer' onClick={() => functions.onClickArrow('right')} />
             </td>
           </tr>
         </thead>

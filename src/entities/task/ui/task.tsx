@@ -7,17 +7,22 @@ import { FcCancel } from 'react-icons/fc';
 import { MdDelete } from 'react-icons/md';
 import cls from './task.module.scss';
 import { Input } from 'shared/ui/input';
+import { useUserStore } from 'entities/user';
+import { validTaskForm } from 'features/task-form';
 
 export const Task = (props: ITaskParams) => {
   const { task } = props;
   const [editedTask, setEditedTask] = useState<ITask>(task);
   const [isEditing, setIsEditing] = useState(false);
+  const [error, setError] = useState<typeof validTaskForm>(validTaskForm);
   const { deleteTask, editTask, isLoading } = useTasksStore();
+  const { user } = useUserStore();
 
   const handleDelete = (e: FormEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-
-    deleteTask({ id: editedTask.id });
+    if (user) {
+      e.preventDefault();
+      deleteTask({ taskId: editedTask.id, userId: user.id });
+    }
   };
 
   const handleFieldChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -31,8 +36,24 @@ export const Task = (props: ITaskParams) => {
   const handleEditTask = (e: FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    editTask(editedTask);
-    setIsEditing(false);
+    if (!editedTask.description.trim() || !editedTask.title.trim()) {
+      if (!editedTask.description.trim()) {
+        setError({ ...error, description: 'Ошибка валидации в описании' });
+      }
+
+      if (!editedTask.title.trim()) {
+        setError({ ...error, title: 'Ошибка валидации в названии' });
+      }
+      return;
+    }
+
+    if (user) {
+      editTask({
+        userId: user.id,
+        task: editedTask,
+      });
+      setIsEditing(false);
+    }
   };
 
   const toggleEdit = (e: FormEvent<HTMLButtonElement>) => {
@@ -53,7 +74,10 @@ export const Task = (props: ITaskParams) => {
         <div className={cls.task__content__item}>
           <label htmlFor='title'>Название </label>
           {isEditing ? (
-            <Input id='title' name='title' value={editedTask.title} onChange={handleFieldChange} />
+            <>
+              <Input id='title' name='title' value={editedTask.title} onChange={handleFieldChange} />
+              {error.title && <span className={cls.error}>{error.title}</span>}
+            </>
           ) : (
             <p>{task.title}</p>
           )}
@@ -61,7 +85,10 @@ export const Task = (props: ITaskParams) => {
         <div className={cls.task__content__item}>
           <label htmlFor='description'>Описание </label>
           {isEditing ? (
-            <Input id='description' name='description' value={editedTask.description} onChange={handleFieldChange} />
+            <>
+              <Input id='description' name='description' value={editedTask.description} onChange={handleFieldChange} />
+              {error.description && <span className={cls.error}>{error.description}</span>}
+            </>
           ) : (
             <p>{task.description}</p>
           )}
