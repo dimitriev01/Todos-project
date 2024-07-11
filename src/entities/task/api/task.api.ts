@@ -11,7 +11,7 @@ import {
 const baseURLTasks = '/tasks';
 
 export const getAllTasksRequest = async (params: IGetAllTaskRequestParams): Promise<ITask[]> => {
-  const response = await api.get(`${baseURLTasks}?userId=${params.userId}?date=${params.date}`);
+  const response = await api.get(`${baseURLTasks}?userId=${params.userId}&date=${params.date}`);
   return response.data;
 };
 
