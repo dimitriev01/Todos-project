@@ -1,7 +1,7 @@
 import { Select } from 'shared/ui/select';
 import { useTasksStore } from '../model/task.store';
 import { EnumTaskStatus, ITask, ITaskParams } from '../model/task.types';
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { CiEdit, CiCircleCheck } from 'react-icons/ci';
 import { FcCancel } from 'react-icons/fc';
 import { MdDelete } from 'react-icons/md';
@@ -40,6 +40,12 @@ export const Task = (props: ITaskParams) => {
 
     setIsEditing((prevIsEditing) => !prevIsEditing);
   };
+
+  useEffect(() => {
+    return () => {
+      setEditedTask(task);
+    };
+  }, []);
 
   return (
     <form className={cls.task}>
